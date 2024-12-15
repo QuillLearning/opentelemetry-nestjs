@@ -527,3 +527,4 @@ import { ControllerInjector } from '@quill-learning/opentelemetry-nestjs';
 })
 export class AppModule {}
 ```
+
