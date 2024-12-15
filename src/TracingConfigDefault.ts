@@ -1,6 +1,5 @@
 import { AsyncLocalStorageContextManager } from '@opentelemetry/context-async-hooks';
 import { Resource } from '@opentelemetry/resources';
-import { NoopSpanProcessor } from '@opentelemetry/sdk-trace-node';
 import {
   CompositePropagator,
   W3CTraceContextPropagator,
@@ -15,6 +14,7 @@ import { containerDetector } from '@opentelemetry/resource-detector-container';
 import { Span } from '@opentelemetry/api';
 import { IncomingMessage } from 'http';
 import { TracingConfig } from './TracingConfig.interface';
+import { NoopSpanProcessor } from '@opentelemetry/sdk-trace-node';
 
 export const NodeAutoInstrumentationsDefaultConfig = <InstrumentationConfigMap>{
   '@opentelemetry/instrumentation-fs': {
@@ -72,7 +72,7 @@ export const TracingDefaultConfig = <TracingConfig>{
   instrumentations: [
     getNodeAutoInstrumentations(NodeAutoInstrumentationsDefaultConfig),
   ],
-  spanProcessor: new NoopSpanProcessor(),
+  spanProcessors: [new NoopSpanProcessor()],
   textMapPropagator: new CompositePropagator({
     propagators: [
       new JaegerPropagator(),

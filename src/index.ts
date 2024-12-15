@@ -20,3 +20,6 @@ export * from './Trace/Injectors/ConsoleLoggerInjector';
 export * from './Trace/Injectors/PipeInjector';
 export * from './Trace/Injectors/ScheduleInjector';
 export * from './Trace/NoopTraceExporter';
+
+// Log
+export * from './Log/NoopLogRecordExporter';

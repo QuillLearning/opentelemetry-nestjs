@@ -1,9 +1,9 @@
-import { ReadableSpan, SpanExporter } from '@opentelemetry/sdk-trace-base';
 import { ExportResult } from '@opentelemetry/core';
+import { LogRecord, LogRecordExporter } from '@opentelemetry/sdk-logs';
 
-export class NoopSpanExporter implements SpanExporter {
+export class NoopLogRecordExporter implements LogRecordExporter {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  export(_spans: ReadableSpan[]): Promise<ExportResult> {
+  export(_logs: LogRecord[]): Promise<ExportResult> {
     return Promise.resolve({ code: 0 });
   }
 

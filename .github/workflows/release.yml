@@ -19,11 +19,13 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 'lts/*'
+      - name: Install pnpm
+        run: npm install -g pnpm
       - name: Install dependencies
-        run: npm ci
-      - run: npm run lint
-      - run: npm run test:cov
-      - run: npm run build
+        run: pnpm install
+      - run: pnpm run lint
+      - run: pnpm run test:cov
+      - run: pnpm run build
       - name: Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
