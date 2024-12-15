@@ -3,7 +3,7 @@ import { TracingConfig } from './TracingConfig.interface';
 import { TracingDefaultConfig } from './TracingConfigDefault';
 
 export class Tracing {
-  static init(configuration: TracingConfig): NodeSDK {
+  static init(configuration: Partial<TracingConfig>): NodeSDK {
     const otelSDK = new NodeSDK({
       ...TracingDefaultConfig,
       ...configuration,

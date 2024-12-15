@@ -14,7 +14,7 @@ describe('Base Trace Injector Test', () => {
   beforeEach(() => {
     const exporter = new NoopSpanProcessor();
     exporterSpy = jest.spyOn(exporter, 'onStart');
-    Tracing.init({ serviceName: 'a', spanProcessor: exporter });
+    Tracing.init({ serviceName: 'a', spanProcessors: [exporter] });
   });
 
   afterEach(() => {
